@@ -5,6 +5,7 @@ const meal = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=';
 const restaurant = 'https://developers.zomato.com/api/v2.1/search?apikey=3d3fcf34cda34fce587f2359960fe43f&entity_id=';
 const locURL = 'https://developers.zomato.com/api/v2.1/locations?apikey=3d3fcf34cda34fce587f2359960fe43f&query=';
 
+//to handle when restart button is pushed
 $('.restart').on('click', function(){
   $('.intro-pic').show();
   $('.instructions').show();
@@ -17,15 +18,13 @@ $('.get-started').on('click', function(){
   $('.js-form').show();
   watchForm(); 
 });
+
+//Starting sequence
 function watchForm() {
-  
-  /*$('.container').show();
-  $('.intro-pic').show();*/
   $('.buttonval').on('click', function(event) {
     event.preventDefault(); 
    $('.container').hide();
    $('.intro-pic').hide(); 
-
    const locGet = $('#js-search-term').val();
    const cuisine = $('#js-cuisine-type').val();
    getInfo(cuisine);
@@ -33,6 +32,7 @@ function watchForm() {
  
    
   });
+  //This is in case the user hits restart on the first page. 
   $('.restart').on('click', function(){
     $('.intro-pic').show();
     $('.instructions').show();
@@ -42,6 +42,7 @@ function watchForm() {
 }
 $(watchForm);
 
+//First accesses MealDB to get recipes
 function getInfo(cuisine) {
  const url1 = meal + cuisine;
  console.log(url1);
@@ -58,6 +59,7 @@ function getInfo(cuisine) {
    });
 };
 
+//Then accesses Zomato to first get location id then uses that to find restaurants at that id
 function getInfo2(loc, cuisine) {
  const url12 = locURL + loc + '%20'; 
  console.log(url12);
@@ -70,7 +72,7 @@ function getInfo2(loc, cuisine) {
    throw new Error(response.statusText);
    })
   .then(responseJson => {
-   let idVal = responseJson.location_suggestions[0].entity_id;
+   let idVal = responseJson.location_suggestions[0].entity_id; //gets the location id first
    let urlNew = restaurant + idVal + '&entity_type=city&q=' + cuisine ; 
    console.log(urlNew);
    fetch(urlNew)
@@ -88,7 +90,7 @@ function getInfo2(loc, cuisine) {
 };
 
 
-function displayResults(responseJson) {
+function displayResults(responseJson) { //Displaying results for first API call. 
  console.log(responseJson);
  var arr = responseJson;
  console.log(arr);
@@ -102,7 +104,7 @@ function displayResults(responseJson) {
  };
  $('#results').removeClass('hidden');
  
- $('.restart').on('click', function(){
+ $('.restart').on('click', function(){ 
     $('#results').addClass('hidden');
     $('#results-list-1').empty(); 
     $('#results-list-2').empty(); 
@@ -112,7 +114,7 @@ function displayResults(responseJson) {
 };
 
 
-function displayResults2(responseJson2) {
+function displayResults2(responseJson2) { 
  console.log(responseJson2);
  var arr = responseJson2;
  let lenTotal2 = arr.restaurants.length;
