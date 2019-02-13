@@ -46,6 +46,7 @@ body {
 }
 
 .js-form{
+  display: none; 
   width: 500px;
   height: 300px; 
   padding-left:40px;
@@ -128,9 +129,23 @@ label{
 }
 
 .contain-results h2{
-  color: rgb(227, 161, 67);
+  color: rgb(227, 161, 67);  
+}
+
+#results-list-1{
+  display:inline-block; 
+  margin-right: auto; 
+  margin-left: auto; 
   
 }
+#results-list-2{
+  display:inline-block;
+  
+  margin-right: auto; 
+  margin-left: auto; 
+}
+
+
 .restart{ 
   font-size: 20px;
   margin-top: 5px;
@@ -156,6 +171,17 @@ label{
   width: 100%; 
 }
 
+.get-started{
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px; 
+  width: 300px;
+  background-color: rgb(250, 106, 82); 
+  color: rgb(253, 243, 160);
+  display:block; 
+  margin-right: auto; 
+  margin-left: auto; 
+}
 
 
 

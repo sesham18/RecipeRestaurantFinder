@@ -6,14 +6,21 @@ const restaurant = 'https://developers.zomato.com/api/v2.1/search?apikey=3d3fcf3
 const locURL = 'https://developers.zomato.com/api/v2.1/locations?apikey=3d3fcf34cda34fce587f2359960fe43f&query=';
 
 $('.restart').on('click', function(){
+  $('.intro-pic').show();
+  $('.instructions').show();
   watchForm();  
 });
 
-
+$('.get-started').on('click', function(){
+  $('.instructions').hide();
+  $('.container').show();
+  $('.js-form').show();
+  watchForm(); 
+});
 function watchForm() {
   
-  $('.container').show();
-  $('.intro-pic').show();
+  /*$('.container').show();
+  $('.intro-pic').show();*/
   $('.buttonval').on('click', function(event) {
     event.preventDefault(); 
    $('.container').hide();
@@ -24,15 +31,20 @@ function watchForm() {
    getInfo(cuisine);
    getInfo2(locGet, cuisine);
  
+   
+  });
+  $('.restart').on('click', function(){
+    $('.intro-pic').show();
+    $('.instructions').show();
+    $('.container').hide();
+    $('.js-form').hide(); 
  });
 }
 $(watchForm);
 
 function getInfo(cuisine) {
  const url1 = meal + cuisine;
- 
  console.log(url1);
-
  fetch(url1)
    .then(response => {
      if (response.ok) {
