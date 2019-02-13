@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Plan your next meal</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
+
+</head>
+<body>
+    <main role="main">
+    
+    <div class="title" aria-live="polite">
+        <h1>What's for Dinner?</h1>
+    </div>
+    
+    <div class="instructions" aria-live="polite">
+        <p>We all know how funny Pinterest fails are...until it happens to you. </p>
+        <p>Try out a recipe...and if it fails, check out a restaurant close to you! </p>
+        <img class="intro-pic" src="https://takelessons.com/blog/wp-content/uploads/2014/03/eggy-pinterest-fail.jpg" alt="image"/>
+    </div>
+    
+    <div class="container" aria-live="polite">
+        <form id="js-form" class="js-form">
+            <label for="search-term">Enter the city you live in </label>
+            <input type="text" name="search-term" id="js-search-term" placeholder="i.e. Seattle" required>
+
+            <label for="cuisine-type">Cuisine Type</label>
+            <input type="text" name="cuisine-type" id = "js-cuisine-type" placeholder="i.e. Mexican" required>
+            <br><input type="reset" value="Reset" class="resetButton">
+            <input type="submit" id = "submit" class="buttonval" value="Go!">
+        </form>
+    </div>
+    
+    <div class="contain-results" aria-live="polite">
+        <button class="restart" id="restart">Restart</button>
+        <p id="js-error-message" class="error-message"></p>
+        <section id="results" class="hidden">
+        
+        <h2>Recipe Results: </h2>
+          <ul id="results-list-1">
+          </ul>
+          <h2>Don't want to cook? Here are restaurants close to you: </h2>
+          <ul id="results-list-2">
+          </ul>
+          
+        </section>   
+    </div>
+
+    <script src="index.js"></script>
+    </main>
+</body>
+</html>
